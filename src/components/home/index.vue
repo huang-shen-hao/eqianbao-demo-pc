@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import TabBar from './tabBar.vue'
+import TabBar from '@/components/home/tabBar.vue';
+import Swiper from '@/components/home/swiper.vue';
 </script>
 
 <template>
-  <!--  顶部标签栏-->
   <div class="container">
+    <!--  顶部标签栏-->
     <tab-bar />
+    <!--轮播图-->
+    <Swiper />
   </div>
 </template>
 
-<style scoped lang='scss'>
-
-</style>
-
+<style scoped lang="scss"></style>

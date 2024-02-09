@@ -578,6 +578,7 @@ const resetInfoStyle = (index: number) => {
     .bottom_menu {
       margin: 0 20px;
       font-size: 14px;
+      z-index: 9; //防止遮挡
       .info_container {
         position: absolute;
         top: 100%;
