@@ -351,7 +351,7 @@ const resetInfoStyle = (index: number) => {
           <div
             class="info_container_2_left"
             :style="{
-              backgroundImage: `url('${item.url}')`,
+              backgroundImage: `url(${item.url})`,
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'right',
             }"
@@ -430,7 +430,7 @@ const resetInfoStyle = (index: number) => {
     .QrCode {
       width: 100px;
       height: 240px;
-      padding: 10px 0;
+      padding-top: 10px;
       display: flex; //图片二维码和类型
       background-color: white;
       color: #fff;
@@ -439,7 +439,7 @@ const resetInfoStyle = (index: number) => {
       left: 0;
       opacity: 0;
       visibility: hidden;
-      transition: opa、city 0.3s ease-in-out;
+      transition: opacity 0.3s ease-in-out;
     }
   }
   .QrCode_show:hover .QrCode {
@@ -646,6 +646,7 @@ const resetInfoStyle = (index: number) => {
           color: rgba(0, 0, 0, 0.85);
           line-height: 28px;
           text-align: left;
+          background-color: white;
           p {
             font-size: 14px;
             color: #666;
@@ -667,6 +668,12 @@ const resetInfoStyle = (index: number) => {
           }
         }
       }
+    }
+    .bottom_menu:hover {
+      cursor: default; /* 默认情况下的指针样式 */
+    }
+    .bottom_menu:nth-child(8):hover {
+      cursor: pointer; /* 手指*/
     }
   }
 }
