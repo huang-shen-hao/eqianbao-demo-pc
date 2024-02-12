@@ -73,6 +73,94 @@ const leftList = [
       'https://trial-cdn.esign.cn/upload/3568d92d-2a90-5caa-b5da-ae104ab98375!!5-7.png',
   },
 ];
+const rightList = [
+  [
+    {
+      title: '电子签名API',
+      content: '提供丰富的API接口与页面嵌入，让业务系统快速集成电子签能力',
+      tag: ['SaaS API', '基础能力API', '开放平台'],
+      button: ['免费试用', '在线咨询'],
+    },
+    {
+      title: '电子合同SaaS',
+      content: '服务成长型企业管人事、做生意的在线合同签管一体化平台',
+      tag: ['基础版', '专业版', '高级版', '智能版'],
+      button: ['免费试用', '在线咨询'],
+    },
+    {
+      title: 'e签盾',
+      content: 'CA数字证书管理与行业应用的整体解决方案',
+      tag: ['身份认证', '电子签章', '加密解密'],
+      button: ['免费试用', '在线咨询'],
+    },
+  ],
+  [
+    {
+      title: '天印',
+      content: '企业级集团化电子签章一体化平台',
+      tag: ['文档中心', '签署中心', '印控中心', '证据中心'],
+      button: ['免费试用', '在线咨询'],
+    },
+    {
+      title: '信创签章',
+      content: '国内领先的信创电子签章套件',
+      tag: ['国密/商密印章管理', 'PDF签署', 'OFD签署', '密钥管理'],
+      button: ['免费试用', '在线咨询'],
+    },
+    {
+      title: '铁证证据管理系统',
+      content: '企业级私有化区块链业务存证平台',
+      tag: ['证据管理', '自定义证据链', '自定义报告', '在线出证'],
+      button: ['免费试用', '在线咨询'],
+    },
+  ],
+  [
+    {
+      title: '统一电子印章平台',
+      content:
+        '建设一体化电子印章公共服务基础设施平台，助力全社会实现数字化转型',
+      tag: ['印章申领', '签署管理', '应用中心', '统一监管'],
+      button: ['免费试用', '在线咨询'],
+    },
+    {
+      title: '电子场景应用平台',
+      content:
+        '提供丰富多样化的场景应用解决方案，普及电子印章应用，支撑政务服务标准化、规范化、便利化',
+      tag: ['入职管理', '员工花名册', '合同签署', '合同签署'],
+      button: ['免费试用', '在线咨询'],
+    },
+    {
+      title: '医签宝',
+      content: '做最懂医疗的电子签名产品',
+      tag: ['医护签名', '患者签名', '手写板签名', '电子病例签名'],
+      button: ['免费试用', '在线咨询'],
+    },
+  ],
+  [
+    {
+      title: '超阅',
+      content: '好用的中国标准OFD版式文档办公产品',
+      tag: ['办公套件', '处理器', '设计器', '超阅云'],
+      button: ['免费试用', '在线咨询'],
+    },
+  ],
+  [
+    {
+      title: '法律合规',
+      content:
+        '联合权威机构，打造安全无忧的法律保障服务体系；结合业务场景，定制合法有效的电子签约合规方案',
+      tag: ['证据报告', '司法鉴定', '流程公证', '法律服务'],
+      button: ['免费试用', '在线咨询'],
+    },
+  ],
+];
+const rightImgList = [
+  'https://trial-cdn.esign.cn/upload/25e66a3c-ddb5-596d-9b2d-0d6404568fd7!!5-12.png',
+  'https://trial-cdn.esign.cn/upload/9830cae2-8ddf-50f6-a966-c5655d58abd1!!5-12.png',
+  'https://trial-cdn.esign.cn/upload/fbea8c5a-0683-52b6-8aac-db06843f312f!!5-12.png',
+  'https://trial-cdn.esign.cn/upload/8adcaa97-2b4b-5cb4-8c53-80eb77121dae!!5-12.png',
+  'https://trial-cdn.esign.cn/upload/022869de-c4a1-55c4-8c02-87581cb303cf!!5-12.png',
+];
 </script>
 
 <template>
@@ -96,7 +184,49 @@ const leftList = [
         </div>
       </div>
       <div class="main-right">
-        <div class="main-right-item">右边</div>
+        <div
+          class="main-right-item"
+          v-for="(item, index) in rightList[currentIndex]"
+          :key="index"
+        >
+          <!--标题-->
+          <p class="right-title">{{ item.title }}</p>
+          <!--内容-->
+          <p class="right-content">{{ item.content }}</p>
+          <!--标签-->
+          <div class="tag-container">
+            <span v-for="tagItem in item.tag" :key="tagItem">
+              {{ tagItem }}
+            </span>
+          </div>
+          <!--按钮-->
+          <div>
+            <span
+              class="btn-container"
+              v-for="buttonItem in item.button"
+              :key="buttonItem"
+            >
+              {{ buttonItem }}
+            </span>
+          </div>
+        </div>
+        <!--图片-->
+        <div class="img-container">
+          <!--图片在右下角的样式-->
+          <img
+            v-if="
+              currentIndex === 0 || currentIndex === 1 || currentIndex === 2
+            "
+            class="img1"
+            :src="rightImgList[currentIndex]"
+          />
+          <!--图片在底部的样式-->
+          <img
+            v-if="currentIndex === 3 || currentIndex === 4"
+            class="img2"
+            :src="rightImgList[currentIndex]"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -113,6 +243,7 @@ const leftList = [
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .p1 {
     font-size: 32px;
     line-height: 50px;
@@ -123,7 +254,6 @@ const leftList = [
   }
   .main {
     width: 85%;
-    height: 660px;
     display: flex;
     .main-left {
       width: 40%;
@@ -131,11 +261,12 @@ const leftList = [
       .main-left-item {
         width: 100%;
         height: 120px;
-        border-bottom: 2px solid black;
+        border-bottom: 1px solid #f5f1f1;
         box-sizing: border-box;
         padding: 20px;
         box-shadow: 0 4px 10px 0 hsla(0, 0%, 83.5%, 0.5);
         text-align: left;
+        cursor: pointer;
         .span1 {
           font-size: 20px;
           font-weight: 600;
@@ -162,7 +293,7 @@ const leftList = [
         }
       }
       .main-left-item.active {
-        height: 180px;
+        height: 240px;
         .span1 {
           color: red;
         }
@@ -176,8 +307,87 @@ const leftList = [
     }
     .main-right {
       width: 60%;
-      height: 660px;
-      background-color: #333333;
+      box-sizing: border-box;
+      position: relative; //产生层叠上下文
+      background-color: white;
+      .main-right-item {
+        position: relative;
+        width: 100%;
+        height: 240px;
+        box-sizing: border-box;
+        padding: 20px 66px;
+        border-bottom: 1px solid #f5f1f1;
+        z-index: 1;
+        .right-title {
+          font-size: 20px;
+          color: rgba(0, 0, 0, 0.85);
+          line-height: 28px;
+          font-weight: 600;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .right-content {
+          font-size: 14px;
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.65);
+          line-height: 20px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          margin-top: -10px;
+        }
+        .tag-container {
+          span {
+            display: inline-block;
+            min-width: 66px;
+            height: 18px;
+            line-height: 18px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 0, 0, 0.65);
+            margin-right: 11px;
+            text-align: center;
+            padding: 0 7px;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.65);
+          }
+        }
+        .btn-container {
+          display: inline-block;
+          border: 1px solid red;
+          width: 100px;
+          height: 30px;
+          margin-right: 20px;
+          margin-top: 20px;
+          text-align: center;
+          line-height: 30px;
+          cursor: pointer;
+          color: #999999;
+        }
+        .btn-container:first-child {
+          transition: background-color 0.3s ease; /* 添加过渡效果 */
+        }
+        .btn-container:first-child:hover {
+          background-color: #cc0000;
+          color: white;
+        }
+      }
+      .img1 {
+        position: absolute;
+        width: 480px;
+        height: 500px;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+      }
+      .img2 {
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+      }
     }
   }
 }
