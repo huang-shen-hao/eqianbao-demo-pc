@@ -235,7 +235,7 @@ const rightImgList = [
 <style scoped lang="scss">
 .container {
   width: 100%;
-  height: 900px;
+  height: 940px;
   background: url(https://trial-cdn.esign.cn/upload/8a99deb0-42c5-5db7-ad4d-17af48ec5bec!!5-20.jpg)
     50% / cover no-repeat;
   z-index: 0;
