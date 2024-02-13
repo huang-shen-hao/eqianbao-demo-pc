@@ -4,6 +4,7 @@ import bannerWrapper from '@/components/home/banner-pc-content-wrapper.vue';
 import Product from '@/components/home/product.vue';
 import Plan from '@/components/home/solve-plan-wrapper.vue';
 import Infrastructure from '@/components/home/infrastructure.vue';
+import Choose from '@/components/home/choose.vue';
 </script>
 
 <template>
@@ -18,6 +19,8 @@ import Infrastructure from '@/components/home/infrastructure.vue';
     <Plan />
     <!--安全合规的基础设施-->
     <Infrastructure />
+    <!--更多客户选择使用e签宝-->
+    <Choose />
   </div>
 </template>
 
