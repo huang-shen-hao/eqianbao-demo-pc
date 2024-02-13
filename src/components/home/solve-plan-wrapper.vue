@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const imgList = [
   'https://trial-cdn.esign.cn/upload/7e518cf8-d537-5a27-bb8b-48c4eb899fbc!!5-13.jpg', //证券
@@ -15,6 +15,12 @@ const imgList = [
   'https://trial-cdn.esign.cn/upload/0b9df07a-ffe1-5b2a-adf9-8d39a8456f51!!5-13.jpg', //制造业
   'https://trial-cdn.esign.cn/upload/ba39a3d8-0d5a-55e7-a391-7df19d86f7b8!!5-13.jpg', //快消行业
 ];
+// 左边箭头
+const ArrowLeft =
+  'https://trial-cdn.esign.cn/upload/8bd037b8-38fc-51b5-9418-f9bdac1bd479!!5-12.png';
+// 右边箭头
+const ArrowRight =
+  'https://trial-cdn.esign.cn/upload/8bd037b8-38fc-51b5-9418-f9bdac1bd479!!5-12.png';
 const btnList = [
   {
     name: '银行/证券基金',
@@ -126,12 +132,70 @@ const onBtnClick = (index: number) => {
   // console.log('lll', btn);
   planRef.value && planRef.value.setActiveItem(index);
 };
+// 滑动行为
+// 找到包裹内容的div
+const scrollWrapper = ref();
+const containerRef = ref();
+const startPosition = ref<number>(0); //获取鼠标初始位置
+const isDragging = ref<boolean>(false); //是否在拖动
+const handleMouseDown = (e: MouseEvent) => {
+  startPosition.value = e.clientX;
+  isDragging.value = true;
+  e.preventDefault();
+  containerRef.value?.addEventListener('mousemove', handleMouseMove);
+  containerRef.value?.addEventListener('mouseup', handleMouseUp);
+};
+const handleMouseMove = (e: MouseEvent) => {
+  if (isDragging.value) {
+    e.preventDefault();
+    const distance = e.clientX - startPosition.value;
+    console.log('cc', distance);
+    scrollWrapper.value.scrollLeft -= distance;
+    startPosition.value = e.clientX;
+  }
+};
+
+const handleMouseUp = (e: MouseEvent) => {
+  e.preventDefault();
+  isDragging.value = false;
+  containerRef.value?.removeEventListener('mousemove', handleMouseMove);
+  containerRef.value?.removeEventListener('mouseup', handleMouseUp);
+};
+
+onMounted(() => {
+  scrollWrapper.value?.addEventListener('mousedown', handleMouseDown);
+});
+
+// onMounted(() => {
+//   scrollWrapper.value?.addEventListener('mousedown', (e: MouseEvent) => {
+//     isDragging.value = true;
+//     e.preventDefault(); // 防止默认的文字选择行为
+//   });
+//   scrollWrapper.value?.addEventListener('mousemove', (e: MouseEvent) => {
+//     if (isDragging.value) {
+//       e.preventDefault(); // 防止默认的选择行为
+//       const distance = e.clientX - startPosition.value;
+//       scrollWrapper.value.scrollLeft -= distance;
+//       startPosition.value = e.clientX;
+//     }
+//   });
+//   // 给父元素加上mouseup事件
+//   containerRef.value?.addEventListener('mouseup', (e: MouseEvent) => {
+//     e.preventDefault(); // 防止默认的选择行为
+//     isDragging.value = false;
+//     console.log(isDragging.value);
+//   });
+// });
 </script>
 
 <template>
-  <div class="plan-container">
+  <div class="plan-container" ref="containerRef">
     <p class="title">定制化行业解决方案</p>
-    <div class="main">
+
+    <div class="main" ref="scrollWrapper">
+      <!--      <span class="btn-container-left arrow" style="transform: rotate(180deg)">-->
+      <!--        <img :src="ArrowLeft" width="28px" height="28px" />-->
+      <!--      </span>-->
       <span
         @click="onBtnClick(index)"
         :class="{ 'btn-container': true, active: index === currentIndex }"
@@ -140,6 +204,24 @@ const onBtnClick = (index: number) => {
       >
         {{ item.name }}
       </span>
+      <!--      <span class="btn-container-right arrow">-->
+      <!--        <img :src="ArrowRight" width="28px" height="28px" />-->
+      <!--      </span>-->
+    </div>
+    <div class="main-title">
+      {{ btnList[currentIndex].title }}
+    </div>
+    <div class="main-content">{{ btnList[currentIndex].detail }}</div>
+    <div class="main-btn" v-if="btnList[currentIndex].showBtn">了解详情</div>
+    <div class="main-demo">
+      <span style="display: block; color: white">典型案例</span>
+      <div style="background: hsla(0, 0%, 100%, 0.5); margin-top: 20px">
+        <img
+          :src="btnList[currentIndex].demo"
+          min-width="200px"
+          height="60px"
+        />
+      </div>
     </div>
     <el-carousel ref="planRef" trigger="click" height="150px" :autoplay="false">
       <el-carousel-item
@@ -191,11 +273,10 @@ const onBtnClick = (index: number) => {
     );
     .btn-container {
       color: white;
-      width: 14.2666%;
+      width: 16.66666%;
       height: 40px;
       line-height: 40px;
       display: inline-block;
-      overflow: hidden;
       text-align: center;
       cursor: pointer;
       font-size: 16px;
@@ -203,6 +284,83 @@ const onBtnClick = (index: number) => {
     .btn-container.active {
       background-color: #cc0000;
     }
+    //.arrow {
+    //  color: white;
+    //  width: 16.66666%;
+    //  height: 40px;
+    //  line-height: 40px;
+    //  display: inline-block;
+    //  text-align: center;
+    //  cursor: pointer;
+    //  font-size: 16px;
+    //  z-index: 3;
+    //}
+    //.btn-container-left {
+    //  img {
+    //    margin-top: 6px;
+    //  }
+    //}
+    //.btn-container-right {
+    //  img {
+    //    margin-top: 6px;
+    //  }
+    //}
+  }
+  .main-title {
+    min-width: 300px;
+    height: 33px;
+    position: absolute;
+    z-index: 1;
+    top: 28%;
+    left: 10%;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+    margin: 52px 0 14px;
+    color: white;
+  }
+  .main-content {
+    position: absolute;
+    z-index: 1;
+    top: 42%;
+    left: 10%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 34px;
+    max-width: 870px;
+    width: 90%;
+    height: 85px;
+    overflow: auto;
+    color: white;
+  }
+  .main-btn {
+    position: absolute;
+    z-index: 1;
+    top: 52%;
+    left: 10%;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+    border: 1px solid #fff;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 72px;
+    display: inline-block;
+  }
+  .main-btn:hover {
+    border: 1px solid red;
+    color: red;
+  }
+  .main-demo {
+    position: absolute;
+    z-index: 1;
+    top: 62%;
+    left: 10%;
   }
   .el-carousel {
     height: 100%;
