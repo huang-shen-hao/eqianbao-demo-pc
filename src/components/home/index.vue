@@ -3,6 +3,7 @@ import TabBar from '@/components/home/tabBar.vue';
 import bannerWrapper from '@/components/home/banner-pc-content-wrapper.vue';
 import Product from '@/components/home/product.vue';
 import Plan from '@/components/home/solve-plan-wrapper.vue';
+import Infrastructure from '@/components/home/infrastructure.vue';
 </script>
 
 <template>
@@ -15,6 +16,8 @@ import Plan from '@/components/home/solve-plan-wrapper.vue';
     <Product />
     <!--定制化行业解决方案 轮播图-->
     <Plan />
+    <!--安全合规的基础设施-->
+    <Infrastructure />
   </div>
 </template>
 
