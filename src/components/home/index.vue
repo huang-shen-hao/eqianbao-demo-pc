@@ -5,6 +5,7 @@ import Product from '@/components/home/product.vue';
 import Plan from '@/components/home/solve-plan-wrapper.vue';
 import Infrastructure from '@/components/home/infrastructure.vue';
 import Choose from '@/components/home/choose.vue';
+import Info from '@/components/home/info.vue';
 </script>
 
 <template>
@@ -21,6 +22,8 @@ import Choose from '@/components/home/choose.vue';
     <Infrastructure />
     <!--更多客户选择使用e签宝-->
     <Choose />
+    <!--资讯内容-->
+    <Info />
   </div>
 </template>
 
