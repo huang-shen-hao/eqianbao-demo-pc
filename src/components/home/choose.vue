@@ -505,7 +505,7 @@ a {
   }
   @keyframes scrollLeft {
     0% {
-      transform: translateX(10%);
+      transform: translateX(5%);
     }
     100% {
       transform: translateX(-150%);
@@ -514,7 +514,7 @@ a {
 
   @keyframes scrollRight {
     0% {
-      transform: translateX(-10%);
+      transform: translateX(-5%);
     }
     100% {
       transform: translateX(150%);
