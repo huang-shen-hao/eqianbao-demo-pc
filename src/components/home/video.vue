@@ -20,14 +20,19 @@ const showQr = ref<boolean>(false);
 
 <template>
   <div class="video-container">
-    <div class="video-main">
+    <div
+      style="position: absolute; width: 100%; height: 600px; overflow: hidden"
+    >
       <video
         id="video_banner"
         src="//asset.tsign.cn/apps/esign/esign-website-ssr/prod/videos/esignIndex-newbattle.4ff2978.mp4"
         :autoplay="true"
         :muted="true"
         :loop="true"
+        width="100%"
       ></video>
+    </div>
+    <div class="video-main">
       <div class="video-main-title">
         <span>让签署更便捷</span>
         <span style="padding-left: 50px">让信任更简单</span>
@@ -74,13 +79,13 @@ const showQr = ref<boolean>(false);
 
 <style scoped lang="scss">
 .video-container {
-  height: 650px;
+  height: 600px;
   width: 100%;
+  position: relative;
   .video-main {
+    height: 600px;
+    width: 100%;
     position: relative;
-    video {
-      width: 100%;
-    }
     .video-main-title {
       position: absolute;
       width: 60%;
@@ -100,7 +105,7 @@ const showQr = ref<boolean>(false);
       display: flex;
       justify-content: center;
       position: absolute;
-      top: 20%;
+      top: 25%;
       .btn {
         background: #e61717;
         border-color: #e61717;
