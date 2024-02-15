@@ -8,11 +8,12 @@ import Choose from '@/components/home/choose.vue';
 import Info from '@/components/home/info.vue';
 import Video from '@/components/home/video.vue';
 import Form from '@/components/home/form.vue';
+import Footer from '@/components/home/footer.vue';
 </script>
 
 <template>
   <div class="container">
-    <!--  顶部标签栏-->
+    <!-- 顶部标签栏-->
     <tab-bar />
     <!--轮播图-->
     <bannerWrapper />
@@ -30,6 +31,8 @@ import Form from '@/components/home/form.vue';
     <Video />
     <!--表单-->
     <Form />
+    <!--底部-->
+    <Footer />
   </div>
 </template>
 
