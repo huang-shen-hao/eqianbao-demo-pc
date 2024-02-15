@@ -6,6 +6,8 @@ import Plan from '@/components/home/solve-plan-wrapper.vue';
 import Infrastructure from '@/components/home/infrastructure.vue';
 import Choose from '@/components/home/choose.vue';
 import Info from '@/components/home/info.vue';
+import Video from '@/components/home/video.vue';
+import Form from '@/components/home/form.vue';
 </script>
 
 <template>
@@ -24,6 +26,10 @@ import Info from '@/components/home/info.vue';
     <Choose />
     <!--资讯内容-->
     <Info />
+    <!--视频-->
+    <Video />
+    <!--表单-->
+    <Form />
   </div>
 </template>
 
