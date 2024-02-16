@@ -157,7 +157,7 @@ onMounted(() => {
             ref="paginationRef"
             class="left-pagination-item"
             v-for="(item, index) in infoImgList.length"
-            :key="index"
+            :key="item"
             @click="onBtnClick(index)"
           ></div>
         </div>

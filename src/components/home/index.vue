@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import TabBar from '@/components/home/tabBar.vue';
-import bannerWrapper from '@/components/home/banner-pc-content-wrapper.vue';
-import Product from '@/components/home/product.vue';
-import Plan from '@/components/home/solve-plan-wrapper.vue';
-import Infrastructure from '@/components/home/infrastructure.vue';
-import Choose from '@/components/home/choose.vue';
-import Info from '@/components/home/info.vue';
-import Video from '@/components/home/video.vue';
-import Form from '@/components/home/form.vue';
-import Footer from '@/components/home/footer.vue';
-import Tool from '@/components/home/tool.vue';
+import TabBar from './tabBar.vue';
+import bannerWrapper from './banner-pc-content-wrapper.vue';
+import Product from './product.vue';
+import Plan from './solve-plan-wrapper.vue';
+import Infrastructure from './infrastructure.vue';
+import Choose from './choose.vue';
+import Info from './info.vue';
+import Video from './video.vue';
+import Form from './form.vue';
+import Footer from './footer.vue';
+import Tool from './tool.vue';
 </script>
 
 <template>

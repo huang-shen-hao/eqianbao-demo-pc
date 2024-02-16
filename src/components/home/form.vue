@@ -1,7 +1,41 @@
-<script lang="ts" setup=""></script>
+<script lang="ts" setup="">
+import { onMounted, ref } from 'vue';
+let isStick = ref<boolean>(false);
+const scrollFun = () => {
+  console.log(
+    '1999',
+    document.documentElement.scrollHeight,
+    window.innerHeight,
+    window.scrollY,
+  );
+  // 距离底部距离
+  let scrollDistanceToBottom =
+    document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
+  if (scrollDistanceToBottom >= 545 && scrollDistanceToBottom <= 2000) {
+    isStick.value = true;
+  } else {
+    isStick.value = false;
+  }
+};
+onMounted(() => {
+  // Element.scrollHeight 只读属性是一个元素内容高度的度量，包括由于溢出导致的视图中不可见内容。
+  // window.innerHeight 浏览器窗口的视口（viewport）高度（以像素为单位）；如果有水平滚动条，也包括滚动条高度。
+  // window.scrollY返回文档在垂直方向已滚动的像素值。
+  window.addEventListener('scroll', scrollFun);
+});
+const formRef = ref();
+const onClose = () => {
+  isStick.value = false;
+  window.removeEventListener('scroll', scrollFun); //关闭以后就不会再监听了
+};
+</script>
 
 <template>
-  <div class="form-container">
+  <div
+    class="form-container"
+    :style="isStick ? { position: 'sticky', bottom: '0' } : {}"
+    ref="formRef"
+  >
     <div class="form-container-left">
       <div class="elephant">
         <img
@@ -57,6 +91,11 @@
         </div>
       </div>
     </div>
+    <div v-if="isStick" class="close" @click="onClose">
+      <img
+        src="https://trial-cdn.esign.cn/upload/28d7c1c8-c54b-509d-9e17-a0086c340676!!5-16.png"
+      />
+    </div>
   </div>
 </template>
 
@@ -66,6 +105,7 @@
   height: 100px;
   background-color: #676262;
   display: flex;
+  position: relative;
   .form-container-left {
     width: 20%;
     height: 100%;
@@ -144,6 +184,17 @@
         font-weight: 400;
         cursor: pointer;
       }
+    }
+  }
+  .close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    top: 10px;
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 }

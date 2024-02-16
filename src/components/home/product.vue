@@ -13,9 +13,9 @@ const onDivClick = (index: number) => {
     const arr = mainLeftItem[index].classList.value;
     // console.log('ooo', arr);
     if (arr && arr.includes('active')) {
-      mainLeftItem[index].style.background =
+      (mainLeftItem[index] as HTMLElement).style.background =
         `url(${leftList[index].image}) center center no-repeat`;
-      mainLeftItem[index].style.backgroundSize = 'cover';
+      (mainLeftItem[index] as HTMLElement).style.backgroundSize = 'cover';
     }
     // 排他操作
     const arr4 = [0, 1, 2, 3, 4, 5].filter((item) => item != index);

@@ -71,15 +71,12 @@ const qrItems = ref<HTMLElement[] | null>(null);
 // 第一个默认
 const onHover = () => {
   if (qrItems.value) {
-    console.log('ppppp', qrItems.value[0]);
     qrItems.value[0].style.backgroundColor = 'white';
     qrItems.value[0].style.borderLeft = '2px solid red';
     const icon = qrItems.value[0].querySelector('.QrCode_left_item_icon');
     const pic = qrItems.value[0].querySelector('.pic');
-    if (icon) icon.style.backgroundColor = 'green';
-    if (pic) pic.style.display = 'block';
-
-    console.log('ppp', icon, pic);
+    if (icon) (icon as HTMLElement).style.backgroundColor = 'green';
+    if (pic) (pic as HTMLElement).style.display = 'block';
   }
 };
 const changeBackground = (index: number) => {
@@ -228,25 +225,28 @@ const showInfo = (index: number) => {
   console.log('index', index);
   const menuItem = document.querySelectorAll('.bottom_menu'); //拿前五个正好对应index
   if (menuItem[index]) {
-    menuItem[index].style.color = 'red'; // 菜单字体变色
+    (menuItem[index] as HTMLElement).style.color = 'red'; // 菜单字体变色
     // 找对应的info_container
     const infoContainer = menuItem[index].querySelector('.info_container');
     const infoContainer2 = menuItem[index].querySelector('.info_container_2'); //有两个且 不一样的背景
     // console.log(infoContainer,infoContainer2)
-    if (infoContainer) infoContainer.style.visibility = 'visible'; //hover时候显示
-    if (infoContainer2) infoContainer2.style.visibility = 'visible'; //hover时候显示
+    if (infoContainer)
+      (infoContainer as HTMLElement).style.visibility = 'visible'; //hover时候显示
+    if (infoContainer2)
+      (infoContainer2 as HTMLElement).style.visibility = 'visible'; //hover时候显示
   }
   console.log('item', menuItem);
 };
 // 重置样式
 const resetInfoStyle = (index: number) => {
   const menuItem = document.querySelectorAll('.bottom_menu'); //拿前五个正好对应index
-  if (menuItem[index]) menuItem[index].style.color = 'black';
+  if (menuItem[index]) (menuItem[index] as HTMLElement).style.color = 'black';
   // 找对应的info_container
   const infoContainer = menuItem[index].querySelector('.info_container');
   const infoContainer2 = menuItem[index].querySelector('.info_container_2');
-  if (infoContainer) infoContainer.style.visibility = 'hidden'; //离开时时候隐藏
-  if (infoContainer2) infoContainer2.style.visibility = 'hidden'; //离开时时候隐藏
+  if (infoContainer) (infoContainer as HTMLElement).style.visibility = 'hidden'; //离开时时候隐藏
+  if (infoContainer2)
+    (infoContainer2 as HTMLElement).style.visibility = 'hidden'; //离开时时候隐藏
 };
 </script>
 

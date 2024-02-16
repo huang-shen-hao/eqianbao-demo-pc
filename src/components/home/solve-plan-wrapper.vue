@@ -16,11 +16,11 @@ const imgList = [
   'https://trial-cdn.esign.cn/upload/ba39a3d8-0d5a-55e7-a391-7df19d86f7b8!!5-13.jpg', //快消行业
 ];
 // 左边箭头
-const ArrowLeft =
-  'https://trial-cdn.esign.cn/upload/8bd037b8-38fc-51b5-9418-f9bdac1bd479!!5-12.png';
-// 右边箭头
-const ArrowRight =
-  'https://trial-cdn.esign.cn/upload/8bd037b8-38fc-51b5-9418-f9bdac1bd479!!5-12.png';
+// const ArrowLeft =
+//   'https://trial-cdn.esign.cn/upload/8bd037b8-38fc-51b5-9418-f9bdac1bd479!!5-12.png';
+// // 右边箭头
+// const ArrowRight =
+//   'https://trial-cdn.esign.cn/upload/8bd037b8-38fc-51b5-9418-f9bdac1bd479!!5-12.png';
 const btnList = [
   {
     name: '银行/证券基金',
