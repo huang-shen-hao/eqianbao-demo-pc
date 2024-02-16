@@ -9,6 +9,7 @@ import Info from '@/components/home/info.vue';
 import Video from '@/components/home/video.vue';
 import Form from '@/components/home/form.vue';
 import Footer from '@/components/home/footer.vue';
+import Tool from '@/components/home/tool.vue';
 </script>
 
 <template>
@@ -33,6 +34,8 @@ import Footer from '@/components/home/footer.vue';
     <Form />
     <!--底部-->
     <Footer />
+    <!--右侧工具类-->
+    <tool />
   </div>
 </template>
 

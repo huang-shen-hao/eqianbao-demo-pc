@@ -167,7 +167,7 @@ const hotUrl =
 <style scoped lang="scss">
 .container {
   width: 100%;
-  margin-top: 4px; //美观
+  margin-top: 111px; //美观
   position: relative;
   .el-carousel {
     .carousel_img_item {

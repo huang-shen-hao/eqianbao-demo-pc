@@ -391,6 +391,10 @@ const resetInfoStyle = (index: number) => {
 .container {
   width: 100%;
   height: 111px;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  background-color: white;
   .top {
     display: flex;
     justify-content: space-between;

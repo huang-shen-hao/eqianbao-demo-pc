@@ -312,8 +312,7 @@ a {
         padding: 30px 20px;
         height: 172px;
         box-shadow: 0px 4px 5px -2px rgba(238, 230, 230, 0.75);
-        position: sticky;
-        top: 0; /* 相对于父元素顶部的偏移量 */
+        position: relative;
         .main-right-show-title {
           font-size: 20px;
           font-weight: 400;
