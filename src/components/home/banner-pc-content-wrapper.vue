@@ -121,7 +121,7 @@ const hotUrl =
           pagination_container_item_select: currentIndex === index,
         }"
         v-for="(item, index) in imgList.length + 1"
-        :key="index"
+        :key="item"
         @click="onBtnChange(index)"
       ></div>
     </div>

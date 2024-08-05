@@ -23,7 +23,7 @@ const onDivClick = (index: number) => {
     arr4.forEach((item) => {
       if (mainLeftItem[item]) {
         mainLeftItem[item]?.classList.remove('active');
-        mainLeftItem[item].style.background = '#f6f6f9';
+        (mainLeftItem[item] as HTMLElement).style.background = '#f6f6f9';
       }
     });
   }
